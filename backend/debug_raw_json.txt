@@ -1,0 +1,25 @@
+{
+  "title": "Movie Recommendation System",
+  "batch_year": 2024,
+  "department": "Computer Science",
+  "problem_statement": "The problem of recommending movies to users based on their past preferences and ratings.",
+  "our_approach": "We used collaborative filtering with Python and Flask to build a movie recommendation system.",
+  "outcome": "Partially Completed",
+  "completion_percentage": 80,
+  "what_was_delivered": "A functional movie recommendation system that works well for small datasets.",
+  "failed_attempts": [
+    {"tried": "Implementing a content-based filtering approach", "failed_because": "It was too computationally expensive and didn't improve results.", "weeks_lost": 4}
+  ],
+  "dead_ends": ["Using a neural network approach", "Implementing a hybrid approach"],
+  "wish_we_had_known": "Data preprocessing is key to a successful movie recommendation system. We should have spent more time on this.",
+  "whats_next": "We plan to improve the scalability of the system by using a more efficient algorithm and parallel processing.",
+  "unsolved_problem": "Scalability of the movie recommendation system",
+  "open_for_continuation": true,
+  "tech_stack": "Python, Flask, Collaborative Filtering",
+  "domain_tags": ["Entertainment", "Recommendation Systems"],
+  "team_members": "John Doe, Jane Smith",
+  "faculty_advisor": "Dr. John Smith",
+  "code_repo_link": "https://github.com/johndoe/movie-recommendation-system",
+  "report_link": "https://drive.google.com/file/d/1234567890/view",
+  "demo_link": "https://movie-recommendation-system.herokuapp.com/"
+}
