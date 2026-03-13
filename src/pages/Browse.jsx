@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import ProjectCard from '@/components/ProjectCard';
 import { Badge } from '@/components/ui/badge';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import { toast } from 'sonner';
 
 const statuses = ['completed', 'incomplete', 'failed', 'continuation'];
@@ -24,7 +25,7 @@ const Browse = () => {
     try {
       setLoading(true);
       setFetchError(null);
-      const res = await axios.get('http://localhost:8000/projects');
+      const res = await axios.get(`${API_BASE_URL}/projects`);
       setProjects(res.data);
     } catch (err) {
       setFetchError(err.message || String(err));

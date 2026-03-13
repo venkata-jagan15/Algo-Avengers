@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE_URL from '../config';
 import { Navigate, useNavigate } from 'react-router-dom';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
@@ -54,7 +55,7 @@ const InstitutionDashboard = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/projects');
+            const res = await axios.get(`${API_BASE_URL}/projects`);
             // Assuming the 'user.name' or 'user.institution' is what we filter by.
             // Since we don't have a rigid institution field yet, we'll filter based on 
             // a hypothetical 'institution' field, or just return all for demo if not present.

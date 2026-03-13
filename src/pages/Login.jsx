@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 // Hardcoded demo credentials
 const DEMO_CREDENTIALS = [
@@ -23,7 +24,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:8000/login', {
+      const response = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password
       });

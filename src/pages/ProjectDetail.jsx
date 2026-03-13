@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Users, GraduationCap, Wrench, AlertTriangle, Lightbulb, XCircle, ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -49,7 +50,7 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/projects/${id}`);
+        const res = await axios.get(`${API_BASE_URL}/projects/${id}`);
         setProject(res.data);
       } catch (err) {
         setError('Project not found or failed to load.');
@@ -70,7 +71,7 @@ const ProjectDetail = () => {
     setIsSending(true);
 
     try {
-      const res = await axios.post(`http://localhost:8000/projects/${id}/chat`, {
+      const res = await axios.post(`${API_BASE_URL}/projects/${id}/chat`, {
         message: userMsg.content,
         history: chatHistory
       });

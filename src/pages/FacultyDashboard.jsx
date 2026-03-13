@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE_URL from '../config';
 import { Navigate, useNavigate } from 'react-router-dom';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
@@ -54,7 +55,7 @@ const FacultyDashboard = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/projects');
+            const res = await axios.get(`${API_BASE_URL}/projects`);
             setProjects(res.data);
         } catch (error) {
             toast.error("Failed to load dashboard data");
@@ -66,7 +67,7 @@ const FacultyDashboard = () => {
 
     const toggleAccess = async (projectId) => {
         try {
-            const res = await axios.put(`http://localhost:8000/projects/${projectId}/toggle-access`);
+            const res = await axios.put(`${API_BASE_URL}/projects/${projectId}/toggle-access`);
             if (res.data.status === 'success') {
                 setProjects(prev => prev.map(p => 
                     p.id === projectId ? { ...p, repo_access_granted: res.data.repo_access_granted } : p

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, UserPlus, AlertCircle, CheckCircle2 } from 'lucide-react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const ROLES = ['Student'];
 
@@ -43,7 +44,7 @@ const Register = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:8000/register', {
+      await axios.post(`${API_BASE_URL}/register`, {
         name: form.name,
         email: form.email,
         role: form.role,

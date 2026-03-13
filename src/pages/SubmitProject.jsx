@@ -8,6 +8,7 @@ import { Slider } from '@/components/ui/slider';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 // Component for handling dynamic lists of dictionaries (e.g., Failed Attempts)
 const FailedAttemptsList = ({ items, onChange }) => {
@@ -197,7 +198,7 @@ const SubmitProject = () => {
 
     try {
       toast.info("Extracting insights... this may take 15-30 seconds.");
-      const response = await axios.post('http://localhost:8000/analyze-submission', formData, {
+      const response = await axios.post(`${API_BASE_URL}/analyze-submission`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -250,7 +251,7 @@ const SubmitProject = () => {
     }
 
     try {
-      await axios.post('http://localhost:8000/projects', {
+      await axios.post(`${API_BASE_URL}/projects`, {
         title,
         batch_year: parseInt(batchYear) || 2024,
         department,

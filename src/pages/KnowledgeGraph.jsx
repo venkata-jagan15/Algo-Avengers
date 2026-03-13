@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import ForceGraph2D from "react-force-graph-2d";
 import axios from "axios";
+import API_BASE_URL from "../config";
 import { Loader2, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "next-themes";
@@ -39,7 +40,7 @@ const KnowledgeGraph = () => {
     useEffect(() => {
         const fetchGraphData = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/graph-data");
+                const response = await axios.get(`${API_BASE_URL}/graph-data`);
                 const { nodes, edges } = response.data;
 
                 const formattedNodes = nodes.map(node => {
