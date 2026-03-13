@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+gunicorn
 sqlalchemy
 pymysql
 chromadb
@@ -7,3 +8,4 @@ openai
 pydantic
 pydantic-settings
 python-dotenv
+PyPDF2
