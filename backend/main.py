@@ -29,6 +29,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+def startup_db_client():
+    # Sync ChromaDB with SQL on startup
+    # This ensures that even on ephemeral hosts like Render, 
+    # the vector store is rebuilt from the persistent MySQL DB.
+    db = database.SessionLocal()
+    try:
+        rag.sync_chroma_with_db(db)
+    finally:
+        db.close()
+
 @app.get("/")
 def read_root():
     return {"status": "ok", "message": "Inno Track Backend is running"}

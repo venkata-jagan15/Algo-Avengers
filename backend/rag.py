@@ -67,6 +67,27 @@ def match_idea_with_past_projects(user_idea: str, top_k: int = 3):
     )
     return results
 
+def sync_chroma_with_db(db):
+    """
+    Ensure Vector DB is in sync with the SQL DB.
+    Useful for cloud deployments with ephemeral disks (like Render Free).
+    """
+    import models
+    print("Syncing ChromaDB with MySQL...")
+    
+    # Get all projects from SQL
+    projects = db.query(models.Project).all()
+    
+    # Get existing IDs in Chroma
+    existing_ids = collection.get()['ids']
+    
+    for p in projects:
+        if p.id not in existing_ids:
+            print(f"Adding missing project to Chroma: {p.title}")
+            add_project_to_chroma(p.id, p.title, p.problem_statement, p.tech_stack)
+            
+    print(f"Sync complete. {len(projects)} projects indexed.")
+
 def discover_project_relationships(project_id: str, db):
     """
     Find and store relationships for a specific project.
